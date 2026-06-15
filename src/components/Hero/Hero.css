@@ -1,9 +1,33 @@
+/* ============================================
+   @keyframes — EN HAUT EN PREMIER
+   ============================================ */
+
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+@keyframes phonePulse {
+  0%, 100% { box-shadow: 0 0 0 0    rgba(232, 0, 29, 0.6); }
+  50%       { box-shadow: 0 0 0 10px rgba(232, 0, 29, 0);   }
+}
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top;    opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* ============================================
+   Hero
+   ============================================ */
+
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
   display: flex;
-  align-items: center; /* centrage vertical */
-  justify-content: center; /* centrage horizontal */
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background-image: url("../../assets/hero.png");
   background-size: cover;
@@ -11,7 +35,6 @@
   background-attachment: fixed;
 }
 
-/* ── Overlay layers ── */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -22,6 +45,7 @@
     rgba(10, 0, 0, 0.62) 100%
   );
 }
+
 .hero__glow-br {
   position: absolute;
   bottom: -80px;
@@ -29,13 +53,10 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(232, 0, 29, 0.25) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(232, 0, 29, 0.25) 0%, transparent 70%);
   pointer-events: none;
 }
+
 .hero__glow-tl {
   position: absolute;
   top: -60px;
@@ -43,15 +64,10 @@
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(232, 0, 29, 0.1) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(232, 0, 29, 0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* ── Content — centré ── */
 .hero__content {
   position: relative;
   z-index: 2;
@@ -59,19 +75,19 @@
   max-width: 800px;
   margin: 0;
   padding: 40px 20px 60px;
-  text-align: center; /* texte centré */
+  text-align: center;
   opacity: 0;
   transform: translateY(30px);
   transition:
     opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .hero--loaded .hero__content {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ── Headline ── */
 .hero__headline {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4.5vw, 3.2rem);
@@ -81,6 +97,7 @@
   margin-bottom: 20px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
+
 .hero__headline-brand {
   color: var(--red);
   text-shadow:
@@ -88,7 +105,6 @@
     0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* ── Subtitle ── */
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 500;
@@ -101,16 +117,16 @@
     opacity 0.8s 0.15s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.8s 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .hero--loaded .hero__subtitle {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ── CTA group — centré ── */
 .hero__cta-group {
   display: flex;
   flex-direction: column;
-  align-items: center; /* boutons centrés */
+  align-items: center;
   gap: 14px;
   opacity: 0;
   transform: translateY(20px);
@@ -118,12 +134,12 @@
     opacity 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.8s 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .hero--loaded .hero__cta-group {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ── Label "تواصل معنا الآن" ── */
 .hero__cta-label {
   display: flex;
   align-items: center;
@@ -133,20 +149,11 @@
   font-weight: 600;
   color: var(--white-dim);
 }
+
 .hero__cta-label svg {
   animation: bounceY 1.6s ease-in-out infinite;
 }
-@keyframes bounceY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-}
 
-/* ── Phone button ── */
 .hero__phone-btn {
   display: inline-flex;
   align-items: center;
@@ -167,11 +174,13 @@
     transform var(--transition),
     box-shadow var(--transition);
 }
+
 .hero__phone-btn:hover {
   background: rgba(232, 0, 29, 0.22);
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(232, 0, 29, 0.5);
 }
+
 .hero__phone-btn:active {
   transform: translateY(0);
 }
@@ -187,15 +196,6 @@
   flex-shrink: 0;
   animation: phonePulse 2.5s ease-in-out infinite;
 }
-@keyframes phonePulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(232, 0, 29, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 0 10px rgba(232, 0, 29, 0);
-  }
-}
 
 .hero__phone-number {
   font-size: 1.2rem;
@@ -204,7 +204,6 @@
   unicode-bidi: embed;
 }
 
-/* ── WhatsApp button ── */
 .hero__whatsapp-btn {
   display: inline-flex;
   align-items: center;
@@ -223,7 +222,11 @@
     transform var(--transition);
 }
 
-/* Floating WhatsApp button (like the provided screenshot) */
+.hero__whatsapp-btn:hover {
+  background: rgba(37, 211, 102, 0.2);
+  transform: translateY(-1px);
+}
+
 .whatsapp-float {
   position: fixed;
   right: 18px;
@@ -240,21 +243,9 @@
   z-index: 180;
   cursor: pointer;
 }
+
 .whatsapp-float svg {
   color: #fff;
-}
-
-@media (max-width: 768px) {
-  .whatsapp-float {
-    right: 14px;
-    bottom: 70px;
-    width: 56px;
-    height: 56px;
-  }
-}
-.hero__whatsapp-btn:hover {
-  background: rgba(37, 211, 102, 0.2);
-  transform: translateY(-1px);
 }
 
 .home-section {
@@ -368,19 +359,6 @@
   margin-top: 24px;
 }
 
-@media (max-width: 1100px) {
-  .home-preview-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .home-section__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ── Scroll hint ── */
 .hero__scroll-hint {
   position: absolute;
   bottom: 30px;
@@ -388,6 +366,7 @@
   transform: translateX(-50%);
   z-index: 2;
 }
+
 .hero__scroll-line {
   width: 2px;
   height: 50px;
@@ -396,24 +375,14 @@
   margin: 0 auto;
   animation: scrollLine 2s ease-in-out infinite;
 }
-@keyframes scrollLine {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-    opacity: 1;
-  }
-  50% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  100% {
-    transform: scaleY(1);
-    transform-origin: bottom;
-    opacity: 0;
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .home-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* ── Responsive ── */
 @media (max-width: 900px) {
   .hero {
     background-attachment: scroll;
@@ -422,7 +391,20 @@
   .hero__content {
     padding: 50px 20px 70px;
   }
+  .home-section__grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    right: 14px;
+    bottom: 70px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
 @media (max-width: 600px) {
   .hero {
     min-height: 85vh;
@@ -436,6 +418,7 @@
     justify-content: center;
   }
 }
+
 @media (prefers-reduced-motion: reduce) {
   .hero__content,
   .hero__subtitle,
@@ -444,13 +427,7 @@
     opacity: 1;
     transform: none;
   }
-  .hero__phone-icon {
-    animation: none;
-  }
-  .hero__scroll-line {
-    animation: none;
-  }
-  .hero__cta-label svg {
-    animation: none;
-  }
+  .hero__phone-icon  { animation: none; }
+  .hero__scroll-line { animation: none; }
+  .hero__cta-label svg { animation: none; }
 }
