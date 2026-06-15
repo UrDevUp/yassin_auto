@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;800&display=swap");
+
+:root {
+  --red: #e8001d;
+  --red-dark: #b5001a;
+  --red-glow: rgba(232, 0, 29, 0.35);
+  --black: #0a0a0a;
+  --black-soft: #111111;
+  --black-card: #1a1a1a;
+  --gray-dark: #2a2a2a;
+  --gray: #555555;
+  --gray-light: #888888;
+  --white: #ffffff;
+  --white-dim: rgba(255, 255, 255, 0.85);
+
+  --font-display: "Tajawal", "Cairo", sans-serif;
+  --font-body: "Cairo", "Tajawal", sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-red: 0 0 20px var(--red-glow);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+/* Remove any default gutters on the root element */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--white);
+  color: var(--black);
+  line-height: 1.6;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: right;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+input {
+  font-family: var(--font-body);
+}
+
+.app {
+  min-height: 100vh;
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

@@ -1,0 +1,42 @@
+.category-filters {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 28px;
+}
+.category-filters::-webkit-scrollbar { display: none; }
+
+.category-filters__scroll {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  padding-bottom: 4px;
+}
+
+.category-filters__pill {
+  flex-shrink: 0;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  background: var(--black-card);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  color: var(--white-dim);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.category-filters__pill:hover {
+  border-color: rgba(232, 0, 29, 0.4);
+  color: var(--white);
+}
+.category-filters__pill.is-active {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  box-shadow: var(--shadow-red);
+}
+.category-filters__pill:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
