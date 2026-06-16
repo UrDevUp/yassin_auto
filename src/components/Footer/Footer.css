@@ -105,8 +105,8 @@
   align-items: center;
   justify-content: center;
   min-height: 34px;
-  color: var(--red);
-  font-weight: 800;
+  color: var(--black);
+  font-weight: 500;
 }
 .footer__credit-link:hover {
   color: var(--black);

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import CategoryFilters from "../components/CategoryFilters/CategoryFilters";
 import SectionHeader from "../components/SectionHeader/SectionHeader";
@@ -6,13 +6,11 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import { categories, products } from "../data/mockProducts";
 import "./Products.css";
 
-const PAGE_SIZE = 6;
-const LOAD_MORE_STEP = 3;
+const DISPLAY_LIMIT = 3;
 
 export default function Products() {
   const [searchParams] = useSearchParams();
   const [activeCategory, setActiveCategory] = useState("all");
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const searchQuery = searchParams.get("search")?.trim().toLowerCase() || "";
 
   const filtered = useMemo(() => {
@@ -39,15 +37,7 @@ export default function Products() {
     });
   }, [activeCategory, searchQuery]);
 
-  // Réinitialise la pagination quand la catégorie change
-  useEffect(() => {
-    window.requestAnimationFrame(() => {
-      setVisibleCount(PAGE_SIZE);
-    });
-  }, [activeCategory, searchQuery]);
-
-  const visibleProducts = filtered.slice(0, visibleCount);
-  const hasMore = visibleCount < filtered.length;
+  const visibleProducts = filtered.slice(0, DISPLAY_LIMIT);
 
   return (
     <section className="products-page">
@@ -58,11 +48,7 @@ export default function Products() {
           onSelect={setActiveCategory}
         />
 
-        <SectionHeader
-          title="القطع الموجودة"
-          actionLabel={hasMore ? "عرض المزيد" : null}
-          onAction={() => setVisibleCount((c) => c + LOAD_MORE_STEP)}
-        />
+        <SectionHeader title="القطع الموجودة" actionLabel={null} />
 
         {visibleProducts.length > 0 ? (
           <div className="products-page__grid">
